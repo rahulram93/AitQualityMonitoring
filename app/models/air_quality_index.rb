@@ -1,0 +1,2 @@
+class AirQualityIndex < ApplicationRecord
+end

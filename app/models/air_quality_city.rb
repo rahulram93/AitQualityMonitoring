@@ -1,0 +1,2 @@
+class AirQualityCity < ApplicationRecord
+end

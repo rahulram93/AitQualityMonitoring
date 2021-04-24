@@ -24,5 +24,6 @@ Things you may want to cover:
 
 * Deployment instructions
   - rails s
+  - rails runner faye_websocket.rb
 
 * ...

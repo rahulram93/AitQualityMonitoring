@@ -1,0 +1,18 @@
+<h1>Home#index</h1>
+
+<table>
+  <tr> 
+    <th> City </th>
+    <th> Current AQI </th>
+    <th> Last Updated At </th>
+  </tr>
+  
+  <% @air_quality_cities.each do |aqc| %>
+    <tr>
+      <td> <%= aqc[0] %> </td>
+      <td style="color: <%= font_color(aqc[2]) %>"> <%= aqc[2] %> </td>
+      <td> <%= timestamp(aqc[1]) %> </td>
+    </tr>
+  <% end %>
+</table>
+
