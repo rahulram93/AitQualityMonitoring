@@ -21,9 +21,17 @@ Things you may want to cover:
 
 
 * Services (job queues, cache servers, search engines, etc.)
+  - EventMachine
+  - Puma server
 
 * Deployment instructions
-  - rails s
-  - rails runner faye_websocket.rb
+  ### development
+    - rails s
+    - rails runner faye_websocket.rb
+  
+  ### production
+    - rails assets:precompile
+    - RAILS_ENV=production rails s &
+    - RAILS_ENV=production rails runner faye_websocket.rb &
 
 * ...
