@@ -6,13 +6,35 @@
     <th> Current AQI </th>
     <th> Last Updated At </th>
   </tr>
-  
+
+  <% index = 0 %>
   <% @air_quality_cities.each do |aqc| %>
+    <% index = index + 1 %>
     <tr>
-      <td> <%= aqc[0] %> </td>
+      <td class="city-name" data-index="<%= index %>" onclick="displayChart(<%= index %>)"> <%= aqc[0] %> </td>
       <td style="color: <%= font_color(aqc[2]) %>"> <%= aqc[2] %> </td>
       <td> <%= timestamp(aqc[1]) %> </td>
     </tr>
   <% end %>
 </table>
+
+<% index = 0 %>
+<% @air_quality_cities.each  do |aqc| %>
+  <% index = index+1 %>
+  <div id ="chart-container-<%=index%>" class="hidden chart-containers">
+    <h3> <%= aqc[0] %> </h3>
+    <%= line_chart AirQualityCity.where(:city => aqc[0]).pluck(:created_at, :air_quality_index).last(10) %>
+  </div>
+<% end %>
+
+<script> 
+  document.getElementById("chart-container-1").classList.remove("hidden");
+  function displayChart(index) {
+    var charts = document.getElementsByClassName("chart-containers");
+    for(var i = 0; i < charts.length; i++){
+      charts[i].className = "hidden chart-containers";
+    }
+    document.getElementById("chart-container-" + index).className = "chart-containers";
+  }
+</script>
 
